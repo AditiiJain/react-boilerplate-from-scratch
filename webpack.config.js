@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = {
   // entry point that indicates where should the webpack starts bundling
@@ -8,7 +7,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,  // checks for .js or .jsx files
+        test: /\.(js|jsx)$/, // checks for .js or .jsx files
         exclude: /(node_modules)/,
         loader: "babel-loader",
         options: { presets: ["@babel/env"] },
@@ -19,11 +18,12 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  // options for resolving module requests
+  resolve: { extensions: ["*", ".js", ".jsx"] }, // extensions that are used
+  //output point is where webpack should output the bundles and assets
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
     filename: "bundle.js",
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
 };
